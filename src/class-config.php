@@ -920,7 +920,7 @@ class Config {
 				break;
 			case 'group':
 
-				$field_type_name = $type_name . '_' . ucfirst( self::camel_case( $acf_field['name'] ) );
+				$field_type_name = $type_prefix . '_' . ucfirst( self::camel_case( $acf_field['name'] ) );
 				if ( null !== $this->type_registry->get_type( $field_type_name ) ) {
 					$field_config['type'] = $field_type_name;
 					break;
