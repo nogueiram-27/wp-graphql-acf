@@ -1280,6 +1280,7 @@ class Config {
 				'description'     => $description,
 				'acf_field'       => $acf_field,
 				'acf_field_group' => $field_group,
+				'custom_type_prefix' => ( isset( $field_group['graphql_type_prefix'] ) && ! empty( $field_group['graphql_type_prefix'] ) ) ? $field_group['graphql_type_prefix'] : null,
 			];
 
 			$this->register_graphql_field( $type_name, $name, $config );
@@ -1478,10 +1479,10 @@ class Config {
 				'name'            => $field_name,
 				'acf_field'       => $field_group,
 				'acf_field_group' => null,
+				'custom_type_prefix' => ( isset( $field_group['graphql_type_prefix'] ) && ! empty( $field_group['graphql_type_prefix'] ) ) ? $field_group['graphql_type_prefix'] : null,
 				'resolve'         => function ( $root ) use ( $field_group ) {
 					return isset( $root ) ? $root : null;
 				},
-				'custom_type_prefix' => ( isset( $field_group['graphql_type_prefix'] ) && ! empty( $field_group['graphql_type_prefix'] ) ) ? $field_group['graphql_type_prefix'] : null,
 			];
 
 			$qualifier =  sprintf( __( 'Added to the GraphQL Schema because the ACF Field Group "%1$s" was set to Show in GraphQL.', 'wp-graphql-acf' ), $field_group['title'] );
